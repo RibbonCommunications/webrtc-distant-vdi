@@ -1,9 +1,13 @@
 # Change Log
 
-Kandy Distant Driver for VDI eLux change log.
+Distant Driver for VDI eLux change log.
 
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/), however, eLux packages also include a -X identifier, which represents the version of the eLux package
+
+## 1.8.0 - TBD
+### Changed
+- Rebranded from "KandyDistant" to "Distant"; Driver filename, config filename, registry entry and all paths (log and cache) changed to replace mention of "kandy" with "distant". Configuration prioritizes loading of values from [Distant] over [KandyDistant] and [RibbonRTC]. Systemd service name changed from "kandy" to "distant". Renamed the Virtual Driver file from KandyDistant.DLL to Distant.DLL. `KAJ-1711`
 
 ## 1.7.0 - 2022-07-12
 
@@ -11,7 +15,7 @@ Kandy Distant Driver for VDI eLux change log.
 - Support for multiple distant sessions. `KAJ-1030`
 - Logs to indicate if orchestrator fails to open. `KAJ-1164`
 
-- Feature to enable Chrome developer tools (eLux only). See DebugUrlEnabled in the Configuration section in [README.md](https://github.com/Kandy-IO/kandy-distant-vdi/blob/master/eLux/README.md) . `KAJ-1095`
+- Feature to enable Chrome developer tools (eLux only). See DebugUrlEnabled in the Configuration section in [README.md](https://github.com/RibbonCommunications/webrtc-distant-vdi/blob/master/eLux/README.md). `KAJ-1095`
 
 ### Fixed
 - Issue when comming out of sleep / hibernate. `KAJ-1247`
@@ -27,8 +31,8 @@ Kandy Distant Driver for VDI eLux change log.
 - Citrix hangs when coming out of sleep on eLux. `KAJ-1355`
 
 ### Changed
-- Renamed the Virtual Driver file from kanding_distant.so to KandyDistant.DLL. `KAJ-1210`
-- Code Signing certificate was changed to use a different certificate authority. See the [README.md](https://github.com/Kandy-IO/kandy-distant-vdi/blob/KAJ-1201-1195/eLux/README.md) 
+- Renamed the Virtual Driver file from kandy_distant.so to KandyDistant.DLL. `KAJ-1210`
+- Code Signing certificate was changed to use a different certificate authority. See the [README.md](https://github.com/RibbonCommunications/webrtc-distant-vdi/blob/KAJ-1201-1195/eLux/README.md)
 
 
 ## 1.6.1 - 2022-02-9

@@ -1,10 +1,14 @@
 # Change Log
 
-Kandy Distant Driver for VDI Windows change log.
+Distant Driver for VDI Windows change log.
 
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## 1.8.0 - TBD
+#### Changed
+- Rebranded from "KandyDistant" to "Distant"; Driver filename, config filename, registry entry and all paths (log and cache) changed to replace mention of "kandy" with "distant". Configuration prioritizes loading of values from [Distant] over [KandyDistant] and [RibbonRTC]. `KAJ-1711`
 
 ## 1.7.0 - 2022-07-12
 
