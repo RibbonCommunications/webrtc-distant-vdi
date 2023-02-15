@@ -200,6 +200,15 @@ When the VDI Driver is run, log files that are 7 or more days old will be delete
 ### 7.1 Multiple Display Configuration
 The Kandy Distant Driver for VDI supports multiple displays as of version 1.7
 
+### 7.2 Fullscreen & Scaling
+Ensure that VDI version is 1.8 and Distant Tracker version is 2.1.
+The remote app window will properly follow the app in fullscreen mode and supports any of the following conditions:
+- Single or multiple monitors plugged in.
+- Citrix View setting "Use All Displays In Full Screen" can be enabled or disabled.
+- The monitor's display scaling is changed.
+
+If using older Distant Tracker version, video window will still properly follow app but not when Citrix View setting "Use All Displays In Full Screen" is disabled.
+
 #### **<u>Important</u>**
 *For proper FULLSCREEN operation, you should configure Mission Control to use **separate spaces**. <u>This is the default setting in MacOS</u>*
 
@@ -227,5 +236,4 @@ When still disconnected for more than 5 minutes, the CWA your Distant session wi
 ## 9. Known Issues / Limitations
 ### Known Issues
 - No local and remote video seen on video call when the vdi mac recovers from "sleep"  action after 4 minutes. `KAJ-1127`
-- The remote app window functions best in fullscreen mode when Mission Control's *Displays have separate Spaces* is set to the default *checked* setting
 - The remote app window functions best in fullscreen mode when Citrix is configured to use ALL monitors. `KAJ-1314`
