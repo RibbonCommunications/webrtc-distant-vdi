@@ -236,4 +236,4 @@ When still disconnected for more than 5 minutes, the CWA your Distant session wi
 ## 9. Known Issues / Limitations
 ### Known Issues
 - No local and remote video seen on video call when the vdi mac recovers from "sleep"  action after 4 minutes. `KAJ-1127`
-- The remote app window functions best in fullscreen mode when Citrix is configured to use ALL monitors. `KAJ-1314`
+- The remote app window functions best in fullscreen mode when Mission Control's *Displays have separate Spaces* is set to the default *checked* setting
