@@ -1,6 +1,4 @@
-# @kandy-io/kandy-distant-vdi
-
-# Kandy Distant Driver for VDI Mac (Plugin)
+# Distant Driver for VDI Mac (Plugin)
 This driver adds support for [Citrix Workspace App for Mac](https://www.citrix.com/downloads/workspace-app/mac/workspace-app-for-mac-latest.html).
 
 Please note that Citrix refers to Virtual Drivers as "Plugins" when referring to their use on MacOS.
@@ -14,7 +12,7 @@ Dual Core CPU with 4 GB RAM recommended (equivalent to MacBook Air 2015 and newe
 ## 2. Installation
 
 ### 2.1 Preparing Installation Files
-If your Kandy Distant Driver is archived, expand the archive to yield the included files.
+If your Distant Driver is archived, expand the archive to yield the included files.
 
 ### 2.2 Signing
 To assist in signing the product components, the following 3 plist files are provided:
@@ -27,12 +25,12 @@ The plugin and its dependent dynamic libraries must be signed.
 *Please note that you will need to modify paths to suit your directory structure*
 
 Run the following commands:
-- `codesign -f --timestamp -o runtime --entitlements entitlements-dylibs.plist -s "YOUR CERTIFICATE NAME" <source path>/KandyDistant.PlugIn/Contents/Frameworks/libzmq.5.dylib`
-- `codesign -f --timestamp -o runtime -s "YOUR CERTIFICATE NAME" KandyDistant.PlugIn`
+- `codesign -f --timestamp -o runtime --entitlements entitlements-dylibs.plist -s "YOUR CERTIFICATE NAME" <source path>/Distant.PlugIn/Contents/Frameworks/libzmq.5.dylib`
+- `codesign -f --timestamp -o runtime -s "YOUR CERTIFICATE NAME" Distant.PlugIn`
 
 Signing can be verified with the following commands:
-- `codesign --verify --deep --strict --verbose=2 <source path>/KandyDistant.PlugIn/Contents/Frameworks/libzmq.5.dylib`
-- `codesign --verify --deep --strict --verbose=2 <source path>/KandyDistant.PlugIn`
+- `codesign --verify --deep --strict --verbose=2 <source path>/Distant.PlugIn/Contents/Frameworks/libzmq.5.dylib`
+- `codesign --verify --deep --strict --verbose=2 <source path>/Distant.PlugIn`
 
 ### 2.4 Sign the Applications
 #### 2.4.1 Browser
@@ -82,15 +80,15 @@ Should you choose to build your own Apple Disk Image (DMG) for your own purposes
 1. Create an input folder
 2. Create an output folder
 2. Copy the plugin and applications to the input folder:
-  - `KandyDistant.PlugIn`
+  - `Distant.PlugIn`
   - `DistantOrchestrator.app`
   - `DistantBrowser.app`
 3. Create the disk image with the following command:
-`hdiutil create -srcFolder <input folder> -quiet -volname KandyDistant -o <output folder>/KandyDistant.dmg`
+`hdiutil create -srcFolder <input folder> -quiet -volname Distant -o <output folder>/Distant.dmg`
 4. Sign the disk image:
-`codesign -f --timestamp -s "YOUR CERTIFICATE NAME" <output folder>/KandyDistant.dmg`
+`codesign -f --timestamp -s "YOUR CERTIFICATE NAME" <output folder>/Distant.dmg`
 5. Verify signing:
-`codesign --verify --deep --strict --verbose=2 <output folder>/KandyDistant.dmg`
+`codesign --verify --deep --strict --verbose=2 <output folder>/Distant.dmg`
 
 ## 3. Installing
 
@@ -101,39 +99,39 @@ It is expected that you have installed [Citrix Workspace App for Mac](https://ww
 ### 3.2 Installing Files
 1. Ensure that you have created destination directories for the **plugin** and **applications**
 2. Copy the plugin to your preferred Citrix plugins directory:
-`cp -R <source path>/KandyDistant.PlugIn <plugin destination path>`
-3. Copy the 2 applications to the Kandy Application Support directory:
+`cp -R <source path>/Distant.PlugIn <plugin destination path>`
+3. Copy the 2 applications to the Distant Application Support directory:
 - `cp -R <source path>/DistantOrchestrator.app <application destination path>`
 - `cp -R <source path>/DistantBrowser.app <application destination path>`
 
 ## 4. Configuration
 
 ### 4.1 Setup
-*The Citrix Workspace App must be configured to load the KandyDistant plugin*
+*The Citrix Workspace App must be configured to load the Distant plugin*
 The configuration file for the Citrix Workspace App can be found here:
 `~/Library/Application\ Support/Citrix\ Receiver/Modules`
 
 Edit the `Modules` to add the necessary settings:
 1. Open `~/Library/Application\ Support/Citrix\ Receiver/Modules`
 2. Locate the `[ICA 3.0]` section
-3. Append the KandyDistant plugin to the `VirtualDriver` key. It should look similar to the following:
-`VirtualDriver=Thinwire3.0, TWI, SmartCard, SSPI, TUI, KandyDistant.PlugIn`
+3. Append the Distant plugin to the `VirtualDriver` key. It should look similar to the following:
+`VirtualDriver=Thinwire3.0, TWI, SmartCard, SSPI, TUI, Distant.PlugIn`
 4. Under the same section (`[ICA 3.0]`), add a key for our plugin and assign it the value of "On":
-`KandyDistant.PlugIn=On`
+`Distant.PlugIn=On`
 5. Add a section for our plugin (and optionally set your custom executable path):
 ```
-[KandyDistant]
+[Distant]
 ExecutablePath = /your/path/
 ```
 
 ### 4.2 Modifying Citrix Configuration
-LogPath and LogLevel can be added and modified under the KandyDistant section.
+LogPath and LogLevel can be added and modified under the Distant section.
 
 ex:
-- LogPath  = ~/Kandy/logs
+- LogPath  = ~/Distant/logs
 - LogLevel = debug
 
-LogPath will default to `~/Library/Application Support/Kandy/logs`
+LogPath will default to `~/Library/Application Support/Distant/logs`
 LogLevel will default to `info`
 
 Accepted log level values are:
@@ -145,16 +143,16 @@ Accepted log level values are:
 - debug
 - trace
 
-### 4.3 KandyLib Configuration
-KandyLib-specific configuration can be set and modified in your `config ini` file which is expected to be found in the path provided as `ExecutablePath` in your Citrix configuration file (`Modules`):
+### 4.3 Distant Configuration
+Distant-specific configuration can be set and modified in your `config ini` file which is expected to be found in the path provided as `ExecutablePath` in your Citrix configuration file (`Modules`):
 
-The `KandyDistant` section allows configuration flags that affect the browser container to be set.
+The `Distant` section allows configuration flags that affect the browser container to be set.
 
-- CachePath: location where to store the application cache, defaults to: ~/Library/Application Support/Kandy/cache.
+- CachePath: location where to store the application cache, defaults to: ~/Library/Application Support/Distant/cache.
 - CommandSwitch: Optional Command Switch arguments to be used with the browser container. Multiple command switches can be separated by a comma.
 - DebugPort: Debug port to be used for development. If no port is provided the debug port is disabled.
 - ExecutablePath: The absolute path to your execution path and configuration file
-- SessionOverwrite: When enabled, the Kandy Distant Driver handles Session Start requests by creating a new session which overwrites any existing session. Accepted values are: `true`, `false` (default)
+- SessionOverwrite: When enabled, the Distant Driver handles Session Start requests by creating a new session which overwrites any existing session. Accepted values are: `true`, `false` (default)
 - CefLogLevel: Log level used by CEF. Defaults to `info`. Other available choices are `trace`, `debug`, `info`, `warn`, `error`, `critical`, or `off`. `debug` option will display verbose level 1 CEF logs.
 - VerboseLevel: Number flag indicating how verbose the CEF logs will be. Only supports `1`.
 - VerboseModules: Number flag indicating how verbose CEF logs will be on a per module basis. Where the modules are chromium modules and can be found here https://source.chromium.org/chromium/chromium/src. Number used can range from `1` to `3` and `-3` for filtering out modules. For this to work, VerboseLevel must be set to `1`.
@@ -162,8 +160,8 @@ The `KandyDistant` section allows configuration flags that affect the browser co
 
 ### 4.4 Sample (config.ini)
 ```
-[KandyDistant]
-CachePath=~/Library/Application Support/Kandy/cache
+[Distant]
+CachePath=~/Library/Application Support/Distant/cache
 CommandSwitch=ignore-certificate-errors,disable-extensions,disable-gpu
 DebugPort=9222
 ExecutablePath=/your/path
@@ -176,29 +174,29 @@ In this example, VerboseModules will show verbose level 1 webrtc logs and will f
 
 
 ## 5. Before Running
-Make sure that you have created appropriate directories for the KandyDistant log and the browser cache. These values should match your configuration of the Citrix `Modules` file.
+Make sure that you have created appropriate directories for the Distant log and the browser cache. These values should match your configuration of the Citrix `Modules` file.
 Default values are:
-- `~/Library/Application Support/Kandy/logs`
-- `~/Library/Application Support/Kandy/cache`
+- `~/Library/Application Support/Distant/logs`
+- `~/Library/Application Support/Distant/cache`
 
 On M1, you can run the DistantBrowser executable with the `openOnly` flag.
 This is so that the initial one-time loading of the CEF library, which may take a several seconds, can happen.
 
-Congratulations! You have built, signed, installed and configured the KandyDistant plugin for Citrix Workspace App on MacOS!
+Congratulations! You have built, signed, installed and configured the Distant plugin for Citrix Workspace App on MacOS!
 
 ### 6. Logs
-By default, the logs can be found at `~/Library/Application Support/Kandy/logs`.
+By default, the logs can be found at `~/Library/Application Support/Distant/logs`.
 
 #### 6.1 Log Rotation
 Each time the VDI driver is run, log files with the following format will be created:
 - `distant-<pid>.log` - The vdi driver logs.
 - `browser_console-<pid>.log` - The browser process CEF logs.
 
-When the VDI Driver is run, log files that are 7 or more days old will be deleted.
+A maximum of 5 log files are kept. If a new log file is created, the oldest log file is deleted.
 
 ## 7. User Environment
 ### 7.1 Multiple Display Configuration
-The Kandy Distant Driver for VDI supports multiple displays as of version 1.7
+The Distant Driver for VDI supports multiple displays as of version 1.7
 
 #### **<u>Important</u>**
 *For proper FULLSCREEN operation, you should configure Mission Control to use **separate spaces**. <u>This is the default setting in MacOS</u>*
