@@ -192,7 +192,7 @@ Each time the VDI driver is run, log files with the following format will be cre
 - `distant-<pid>.log` - The vdi driver logs.
 - `browser_console-<pid>.log` - The browser process CEF logs.
 
-A maximum of 5 log files are kept. If a new log file is created, the oldest log file is deleted.
+A maximum of 5 log files of each type are kept. When a new log file is created, the oldest log file is deleted.
 
 ## 7. User Environment
 ### 7.1 Multiple Display Configuration
