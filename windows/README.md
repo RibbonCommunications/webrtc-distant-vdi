@@ -87,7 +87,7 @@ Each time the VDI driver is run, log files with the following format will be cre
 - `distant-<pid>.log` - The vdi driver logs.
 - `browser_console-<pid>.log` - The browser process CEF logs.
 
-When the VDI Driver is run, log files that are 7 or more days old will be deleted.
+A maximum of 5 log files of each type are kept. When a new log file is created, the oldest log file is deleted.
 
 ## 5. Sleep & Disconnect
 CWA (Citrix Workspace App) handles computer sleep and network disconnects somewhat differently on each OS when a VDI session is connected. This has some impact on Distant and your Distant sessions. It is important that your application can handle these scenarios. Please refer to the subsections for more information.

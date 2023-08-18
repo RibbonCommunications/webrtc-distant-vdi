@@ -8,6 +8,7 @@ Distant Driver for VDI eLux change log.
 ## 1.8.0 - TBD
 ### Changed
 - Rebranded from "KandyDistant" to "Distant"; Driver filename, config filename, registry entry and all paths (log and cache) changed to replace mention of "kandy" with "distant". Configuration prioritizes loading of values from [Distant] over [KandyDistant] and [RibbonRTC]. Systemd service name changed from "kandy" to "distant". Renamed the Virtual Driver file from KandyDistant.DLL to Distant.DLL. `KAJ-1711`
+- Log file rotation is performed to maintain a maximum of 5 log files of each type (`distant-<pid>.log` for primary logs, and `browser_console-<pid>.log` for the remote application). This replaces the previous behaviour which maintained log files for up to 7 days. `KAJ-1377`
 
 ## 1.7.0 - 2022-07-12
 
