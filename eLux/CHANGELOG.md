@@ -14,7 +14,7 @@ Distant Driver for VDI eLux change log.
 ### Fixed
 - Allow same ID to be used to create a session after simulated browser crash. `KAJ-1612`
 - Improved thread handling and cleanup in robustness scenarios. `KAJ-1835`
-- Any Distant message other than a START request will return a SESSION_ERROR event if that session doesn't exist. `KAJ-1870`, `KAJ-1933`
+- Any Distant Session Message and Protocol Heartbeat operation requests will return a SESSION_ERROR event if that session doesn't exist or if it isn't in a ready state. `KAJ-1870`, `KAJ-1933`
 - Improved handling of command line key-value pair arguments. `KAJ-1888`
 
 ### Changed
