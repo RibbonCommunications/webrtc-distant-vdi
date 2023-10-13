@@ -17,8 +17,6 @@ Distant Driver for VDI eLux change log.
 - Any Distant Session Message and Protocol Heartbeat operation requests will return a SESSION_ERROR event if that session doesn't exist or if it isn't in a ready state. `KAJ-1870`, `KAJ-1933`
 - Improved handling of command line key-value pair arguments. `KAJ-1888`
 
-### Changed
-
 ## 1.7.0 - 2022-07-12
 
 ### Added
