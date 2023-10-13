@@ -5,7 +5,7 @@ Distant Driver for VDI eLux change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/), however, eLux packages also include a -X identifier, which represents the version of the eLux package
 
-## 1.7.1
+## 1.7.1 - 2023-10-13
 ### Added
 - Emergency 911 information is sent as part of channel info. `KAJ-1881`
 - E911 - Populate configuration file with ThinClient Generic Data. `KAJ-1883`
