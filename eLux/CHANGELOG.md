@@ -5,9 +5,17 @@ Distant Driver for VDI eLux change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/), however, eLux packages also include a -X identifier, which represents the version of the eLux package
 
-## 1.8.0 - TBD
-### Changed
-- Rebranded from "KandyDistant" to "Distant"; Driver filename, config filename, registry entry and all paths (log and cache) changed to replace mention of "kandy" with "distant". Configuration prioritizes loading of values from [Distant] over [KandyDistant] and [RibbonRTC]. Systemd service name changed from "kandy" to "distant". Renamed the Virtual Driver file from KandyDistant.DLL to Distant.DLL. `KAJ-1711`
+## 1.7.1 - 2023-10-13
+### Added
+- Emergency 911 information is sent as part of channel info. `KAJ-1881`
+- E911 - Populate configuration file with ThinClient Generic Data. `KAJ-1883`
+- E911 - Populate configuration file with Whereami data. `KAJ-1882`
+
+### Fixed
+- Allow same ID to be used to create a session after simulated browser crash. `KAJ-1612`
+- Improved thread handling and cleanup in robustness scenarios. `KAJ-1835`
+- Any Distant Session Message and Protocol Heartbeat operation requests will return a SESSION_ERROR event if that session doesn't exist or if it isn't in a ready state. `KAJ-1870`, `KAJ-1933`
+- Improved handling of command line key-value pair arguments. `KAJ-1888`
 
 ## 1.7.0 - 2022-07-12
 
