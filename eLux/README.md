@@ -2,23 +2,12 @@
 
 This driver adds support for [Citrix Workspace App for Linux](https://docs.citrix.com/en-us/citrix-workspace-app-for-linux.html) on [eLux OS](https://www.unicon-software.com/products/elux/) for use on thin clients.
 
-## 1. eLux Package Signature
-
-Validating package signatures requires the following certificates from [Sectigo's main page](https://support.sectigo.com/articles/Knowledge/Sectigo-Intermediate-Certificates):
-
-Root Certificate:<br>
-[AAA Certificate Services](https://comodoca.my.salesforce.com/sfc/p/1N000002Ljih/a/3l000000sYVG/4l82xrBbMv8Ndh.SBoUvQs0BjYk_pJlb4Sa92KfrsxY)
-
-Intermediate Certificates:<br>
-[Sectigo Public Code Signing CA R36](https://comodoca.my.salesforce.com/sfc/p/#1N000002Ljih/a/3l000000oAhy/QCCby12C7cYo50nNyic6AuG1KFcwe1rDn1EknfTaUzY)<br>
-[SectigoPublicCodeSigningRootR46_AAA [ Cross Signed ]](https://comodoca.my.salesforce.com/sfc/p/1N000002Ljih/a/3l000000sYVB/t5kHfAZUjSL8NyXDwAQ3OhmfoTNSOnWgpnTmksjVyJc)
-
-## 2. Browser Container Certificates
+## 1. Browser Container Certificates
 
 eLux 6.9 provides certificate management directly in the OS for our browser container. If there is a need to use custom certificates for reaching https websites in the browser container please ignore the Certificate Configuration below and put the certificate in the /setup/cacerts/browser folder as mentioned in the eLux [Documentation](https://www.unicon-software.com/udocs/en/#admin_guides/scout_enterprise/app_definition/browser/browser_config.htm?Highlight=cacert).
 
-## 3. Configuration
-### 3.1 Citrix Configuration
+## 2. Configuration
+### 2.1 Citrix Configuration
 *The Citrix Workspace App must be configured to load the Distant plugin*
 The configuration file for the Citrix Workspace App can be found here:
 `/opt/Citrix/ICAClient/config/module.ini`
@@ -40,7 +29,7 @@ Note that the legacy sections, `KandyDistant` and `RibbonRTC`, will still work b
 LogLevel=debug
 ```
 
-### 3.2 Distant Configuration
+### 2.2 Distant Configuration
 Distant-specific configuration can be set and modified in your `distant.ini` file which is expected to be found in `/setup` directory.
 
 The `Distant` section allows configuration flags that affect the browser container to be set.
@@ -56,7 +45,7 @@ Note that the legacy sections, `KandyDistant` and `RibbonRTC`, will still work b
 - VerboseModules: Number flag indicating how verbose CEF logs will be on a per module basis. Where the modules are chromium modules and can be found here https://source.chromium.org/chromium/chromium/src. Number used can range from `1` to `3` and `-3` for filtering out modules. For this to work, VerboseLevel must be set to `1`.
 - DebugUrlEnabled: When enabled, a new session can be started with the debug url `http://locahost:DebugPort` or a `chrome://` url. Whith thse special urls the session will be opened in a new window outside of the Citrix window. ex: Specifying a new session with the following url `chrome://version` will open the chromium version information. Accepted values are: `true`, `false` (default)
 
-### 3.3 Sample (distant.ini)
+### 2.3 Sample (distant.ini)
 
 ```
 [Distant]
@@ -71,31 +60,31 @@ DebugUrlEnabled=true
 ```
 In this example, VerboseModules will show verbose level 1 webrtc logs and will filter out all other modules.
 
-## 4. Logs
+## 3. Logs
 By default, the logs can be found at `/var/log/distant/`.
 
-### 4.1 Log Rotation
+### 3.1 Log Rotation
 Each time the VDI driver is run, log files with the following format will be created:
 - `distant-<pid>.log` - The vdi driver logs.
 - `browser_console-<pid>.log` - The browser process CEF logs.
 
 A maximum of 5 log files of each type are kept. When a new log file is created, the oldest log file is deleted.
 
-## 5. Sleep & Disconnect
+## 4. Sleep & Disconnect
 CWA (Citrix Workspace App) handles computer sleep and network disconnects somewhat differently on each OS when a VDI session is connected. This has some impact on Distant and your Distant sessions. It is important that your application can handle these scenarios. Please refer to the subsections for more information.
 
-### 5.1 Sleep
+### 4.1 Sleep
 When waking from a short sleep (less than approximately 3 minutes) the CWA will resume and your original Distant session will be available.
 
 When waking from a long sleep (more than approximately 3 minutes) :
  - The CWA may exit in which case your Distant session will be closed.
  - The CWA may exit and restart in which case your Distant session may be reloaded, or closed.
 
-### 5.2 Disconnect
+### 4.2 Disconnect
 When the network disconnects, the CWA will prompt asking to reconnect.
 
 When reconnecting, the CWA will resume but the original Distant session will not be available so the user needs to restart their app.
 
 When not reconnecting, then the CWA and Distant session will be closed. The user will need to open a new Citrix connection and create a new session once they have an internet connection.
 
-## 6. Known Issues / Limitations
+## 5. Known Issues / Limitations
