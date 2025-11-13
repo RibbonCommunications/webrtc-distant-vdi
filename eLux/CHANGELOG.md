@@ -5,6 +5,37 @@ Distant Driver for VDI eLux change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/), however, eLux packages also include a -X identifier, which represents the version of the eLux package
 
+## 1.8.0 - <Add-date-here-when-released>
+### Added
+- Rotate logs every time a remote connection is initiated. `KAJ-1377`
+- Allow remote application to open webpages on the client's operating system. `KAJ-1644`
+- Log level "crazy" added to include trace log messages for distant process communication. "trace" and "debug" print fewer messages than before `KAJ-1902`
+- Heartbeat boolean flag "hb" is sent as part of channel info. `KAJ-1901`
+- Packaging for eLux7/RP7 images. `KAJ-2362`
+
+### Fixed
+- Renderer logs don't show up when in sandboxed mode. `KAJ-1761`
+- Debug URL stopped working. `KAJ-1922`
+- Renderer not returning an error code if handler missing. `KAJ-1829`
+- Process base throws error during destruction. `KAJ-1356`
+- CEF handler not passing actual error code when errors are handled. `KAJ-1434`
+- Launching new Orchestrator fails if old orchestrator is still shutting down. `KAJ-2041`
+- Reusing the same ID to create a session after the browser has crashed. `KAJ-1612`
+
+### Changed
+- Directory Ops recursively_create_dirs, which is used when setting log path during Distant initialization, was updated to use boost. `KAJ-1318`
+- Consume less space in eluxsystem partition during installation. `KAJ-1794`
+- Updated CEF to 113.3.5 with chromium version 113.0.5672.129. `KAJ-1650`
+- Rebranded from "KandyDistant" to "Distant"; Driver filename, config filename, registry entry and all paths (log and cache) changed to replace mention of "kandy" with "distant". Configuration prioritizes loading of values from [Distant] over [KandyDistant] and [RibbonRTC]. Systemd service name changed from "kandy" to "distant". `KAJ-1711`
+  The following filepaths have been updated (from -> to):
+  `/var/log/kandy` -> `/var/log/distant`
+  `/var/log/citrix/kandy` -> `/var/log/citrix/distant`
+  `/tmp/kandy` -> `/tmp/distant`
+  `/setup/kandylog.ini` -> `/setup/distantlog.ini`
+  `/setup/kandy.ini` -> `/setup/distant.ini`
+  `/etc/systemd/system/kandy.service` -> `/etc/systemd/system/distant.service`
+  `/opt/Citrix/ICAClient/KandyDistant.DLL` -> `/opt/Citrix/ICAClient/Distant.DLL`
+
 ## 1.7.1-1 - 2024-09-11
 ### Fixed
 - eLux module requirements updated to reflect correct dependencies. `KAJ-2171`
