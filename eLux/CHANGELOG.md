@@ -13,10 +13,6 @@ Distant Driver for VDI eLux change log.
 - Heartbeat boolean flag "hb" is sent as part of channel info. `KAJ-1901`
 - Packaging for eLux7/RP7 images. `KAJ-2362`
 
-### Fixed
-- Launching new Orchestrator fails if old orchestrator is still shutting down. `KAJ-2041`
-- Reusing the same ID to create a session after the browser has crashed. `KAJ-1612`
-
 ### Changed
 - Consume less space in eluxsystem partition during installation. `KAJ-1794`
 - Updated CEF to 113.3.5 with chromium version 113.0.5672.129. `KAJ-1650`
