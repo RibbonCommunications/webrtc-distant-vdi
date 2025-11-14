@@ -88,3 +88,4 @@ When reconnecting, the CWA will resume but the original Distant session will not
 When not reconnecting, then the CWA and Distant session will be closed. The user will need to open a new Citrix connection and create a new session once they have an internet connection.
 
 ## 5. Known Issues / Limitations
+If the maximum number of sessions (default 1000) is exceeded, the sessions will be terminated. User will have to start a new citrix session.
