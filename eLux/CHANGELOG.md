@@ -5,7 +5,7 @@ Distant Driver for VDI eLux change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 - This project adheres to [Semantic Versioning](http://semver.org/), however, eLux packages also include a -X identifier, which represents the version of the eLux package
 
-## 1.8.0 - 2025-11-17
+## 1.8.0 - 2025-11-14
 ### Added
 - Rotate logs every time a remote connection is initiated. `KAJ-1377`
 - Allow remote application to open webpages on the client's operating system. `KAJ-1644`
