@@ -25,6 +25,9 @@ Distant Driver for VDI eLux change log.
   `/etc/systemd/system/kandy.service` -> `/etc/systemd/system/distant.service`
   `/opt/Citrix/ICAClient/KandyDistant.DLL` -> `/opt/Citrix/ICAClient/Distant.DLL`
 
+### Deprecated
+- eLux6/RP6 is now deprecated.
+
 ## 1.7.1-1 - 2024-09-11
 ### Fixed
 - eLux module requirements updated to reflect correct dependencies. `KAJ-2171`
